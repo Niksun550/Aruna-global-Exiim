@@ -28,6 +28,7 @@ const SafeImage = ({
   const [loaded, setLoaded] = useState(false);
   
   const fallback = `https://picsum.photos/seed/${encodeURIComponent(alt)}/1200/1600`;
+  const isLocal = src.startsWith('/');
 
   return (
     <div className={`relative overflow-hidden ${fill ? 'w-full h-full' : ''} ${className}`}>
@@ -37,15 +38,15 @@ const SafeImage = ({
         fill={fill}
         sizes={sizes}
         priority={priority}
-        // Removed unoptimized={isLocal} to allow Next.js to optimize local images
-        className={`transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        unoptimized={isLocal}
+        className={`transition-all duration-700 ease-out ${
           objectFit === "cover" ? "object-cover" : "object-contain"
-        } ${loaded || priority ? "opacity-100 blur-0" : "opacity-0 blur-2xl"} ${imageClassName}`}
+        } ${loaded || priority ? "opacity-100 blur-0" : "opacity-0 blur-lg"} ${imageClassName}`}
         onLoad={() => setLoaded(true)}
         onError={() => setError(true)}
         referrerPolicy="no-referrer"
       />
-      {!loaded && (
+      {!loaded && !priority && (
         <div className="absolute inset-0 bg-brand-ink/5 animate-pulse" />
       )}
     </div>
