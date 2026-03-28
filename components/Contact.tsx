@@ -69,10 +69,20 @@ const Contact = () => {
             </div>
 
             <div className="pt-12 border-t border-black/5 flex gap-8">
-              <a href="https://www.facebook.com/Arunasart/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-black/5 flex items-center justify-center hover:bg-brand-ink hover:text-white transition-all">
+              <a 
+                href="https://www.facebook.com/Arunasart/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-12 h-12 rounded-full border border-black/5 flex items-center justify-center hover:bg-brand-ink hover:text-white transition-all"
+                aria-label="Follow us on Facebook"
+              >
                 <Facebook size={20} />
               </a>
-              <a href="#" className="w-12 h-12 rounded-full border border-black/5 flex items-center justify-center hover:bg-brand-ink hover:text-white transition-all">
+              <a 
+                href="#" 
+                className="w-12 h-12 rounded-full border border-black/5 flex items-center justify-center hover:bg-brand-ink hover:text-white transition-all"
+                aria-label="Follow us on Instagram"
+              >
                 <Instagram size={20} />
               </a>
             </div>
@@ -88,6 +98,7 @@ const Contact = () => {
               loading="lazy" 
               referrerPolicy="no-referrer-when-downgrade"
               className="grayscale contrast-125 opacity-60 hover:opacity-100 transition-opacity duration-1000"
+              title="Aruna Global Exiim Boutique Location in Pune"
             ></iframe>
           </div>
         </div>

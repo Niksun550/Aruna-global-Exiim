@@ -29,7 +29,7 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-700 ${isScrolled ? 'bg-white/80 backdrop-blur-xl py-4 border-b border-black/5' : 'bg-transparent py-4 md:py-8'}`}>
       <div className="container mx-auto px-8 flex justify-between items-center max-w-7xl">
-        <a href="#home" className="flex items-center group">
+        <a href="#home" className="flex items-center group" aria-label="Aruna Global Exiim Home">
           <div className="relative w-32 h-12 group-hover:scale-105 transition-transform">
             <SafeImage 
               src="/Logo_Aruna.png" 
@@ -59,13 +59,19 @@ const Navbar = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="bg-brand-ink text-white px-8 py-3 rounded-full text-[11px] uppercase tracking-[0.2em] font-bold hover:bg-brand-gold transition-all shadow-xl hover:shadow-brand-gold/20"
+            aria-label="Contact us on WhatsApp"
           >
             Connect
           </a>
         </div>
 
         {/* Mobile Toggle */}
-        <button className="md:hidden text-brand-ink" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+        <button 
+          className="md:hidden text-brand-ink" 
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMobileMenuOpen}
+        >
           {isMobileMenuOpen ? <X size={24} strokeWidth={1.5} /> : <Menu size={24} strokeWidth={1.5} />}
         </button>
       </div>

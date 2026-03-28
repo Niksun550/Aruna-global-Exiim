@@ -143,6 +143,7 @@ const Hero = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="border border-brand-ink/20 text-brand-ink px-10 py-5 rounded-full text-[11px] uppercase tracking-[0.2em] font-bold hover:bg-brand-ink hover:text-white transition-all"
+                  aria-label="Send a private enquiry via WhatsApp"
                 >
                   Private Enquiry
                 </a>

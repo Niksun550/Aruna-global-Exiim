@@ -6,19 +6,34 @@ const StructuredData = () => {
     "@context": "https://schema.org",
     "@type": "ArtGallery",
     "name": "Aruna Global Exiim",
+    "alternateName": "Aruna Art Gallery",
     "description": "Exporters of unique handmade treasures and artistic excellence since 2009. Discover museum-grade murals, paintings, and handicrafts from Pune to the world.",
     "url": "https://arunaglobalexiim.com",
     "logo": "https://arunaglobalexiim.com/Logo_Aruna.png",
+    "image": "https://arunaglobalexiim.com/Logo_Aruna.png",
     "founder": {
       "@type": "Person",
-      "name": "Aruna Kangude"
+      "name": "Aruna Kangude",
+      "jobTitle": "Founder & Lead Artist"
     },
+    "foundingDate": "2009",
+    "areaServed": "Worldwide",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Pune",
       "addressRegion": "Maharashtra",
       "addressCountry": "IN"
     },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+91-8087010632",
+      "contactType": "Sales and Private Enquiry",
+      "areaServed": "Worldwide",
+      "availableLanguage": ["English", "Hindi", "Marathi"]
+    },
+    "sameAs": [
+      "https://wa.me/918087010632"
+    ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Art Collection",

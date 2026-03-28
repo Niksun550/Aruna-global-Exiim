@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     template: '%s | Aruna Global Exiim'
   },
   description: 'Exporters of unique handmade treasures and artistic excellence since 2009. Discover museum-grade murals, paintings, and handicrafts from Pune to the world.',
-  keywords: ['handcrafted art', 'global exports', 'Indian handicrafts', 'murals Pune', 'bespoke castings', 'brushless paintings', 'luxury art exports', 'Aruna Global Exiim'],
+  keywords: ['handcrafted art', 'global exports', 'Indian handicrafts', 'murals Pune', 'bespoke castings', 'brushless paintings', 'luxury art exports', 'Aruna Global Exiim', 'Aruna Kangude', 'Pune art gallery'],
   authors: [{ name: 'Aruna Kangude' }],
   creator: 'Aruna Global Exiim',
   publisher: 'Aruna Global Exiim',
@@ -27,6 +27,14 @@ export const metadata: Metadata = {
     email: false,
     address: false,
     telephone: false,
+  },
+  icons: {
+    icon: '/Logo_Aruna.png',
+    shortcut: '/Logo_Aruna.png',
+    apple: '/Logo_Aruna.png',
+  },
+  alternates: {
+    canonical: 'https://arunaglobalexiim.com',
   },
   openGraph: {
     type: 'website',
@@ -37,7 +45,7 @@ export const metadata: Metadata = {
     description: 'Exporters of unique handmade treasures and artistic excellence since 2009. Discover museum-grade murals, paintings, and handicrafts from Pune to the world.',
     images: [
       {
-        url: '/og-image.png',
+        url: '/Logo_Aruna.png',
         width: 1200,
         height: 630,
         alt: 'Aruna Global Exiim Art Collection',
@@ -48,7 +56,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Aruna Global Exiim | Premium Handcrafted Art & Global Exports',
     description: 'Exporters of unique handmade treasures and artistic excellence since 2009. Discover museum-grade murals, paintings, and handicrafts from Pune to the world.',
-    images: ['/og-image.png'],
+    images: ['/Logo_Aruna.png'],
   },
   robots: {
     index: true,
@@ -61,6 +69,8 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  category: 'Art & Design',
+  classification: 'Art Gallery and Export House',
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {

@@ -101,7 +101,7 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col items-center text-center space-y-12">
-          <a href="#" className="flex flex-col items-center">
+          <a href="#" className="flex flex-col items-center" aria-label="Go to top of page">
             <div className="relative w-48 h-24 mb-4">
               <SafeImage 
                 src="/Logo_Aruna.png" 
@@ -110,6 +110,7 @@ const Footer = () => {
                 sizes="192px"
                 className="object-contain"
                 imageClassName="object-contain"
+                priority
                 objectFit="contain"
               />
             </div>

@@ -28,7 +28,6 @@ const SafeImage = ({
   const [loaded, setLoaded] = useState(false);
   
   const fallback = `https://picsum.photos/seed/${encodeURIComponent(alt)}/1200/1600`;
-  const isLocal = src.startsWith('/');
 
   return (
     <div className={`relative overflow-hidden ${fill ? 'w-full h-full' : ''} ${className}`}>
@@ -38,13 +37,11 @@ const SafeImage = ({
         fill={fill}
         sizes={sizes}
         priority={priority}
-        unoptimized={isLocal}
-        className={`transition-all duration-700 ease-out ${
+        className={`transition-opacity duration-500 ${
           objectFit === "cover" ? "object-cover" : "object-contain"
-        } ${loaded || priority ? "opacity-100 blur-0" : "opacity-0 blur-lg"} ${imageClassName}`}
+        } ${imageClassName}`}
         onLoad={() => setLoaded(true)}
         onError={() => setError(true)}
-        referrerPolicy="no-referrer"
       />
       {!loaded && !priority && (
         <div className="absolute inset-0 bg-brand-ink/5 animate-pulse" />
