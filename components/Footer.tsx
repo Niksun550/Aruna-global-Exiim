@@ -104,7 +104,7 @@ const Footer = () => {
           <a href="#" className="flex flex-col items-center" aria-label="Go to top of page">
             <div className="relative w-48 h-24 mb-4">
               <SafeImage 
-                src="/Logo_Aruna.png" 
+                src="/Aruna.png" 
                 alt="Aruna Global Exiim Logo" 
                 fill 
                 sizes="192px"

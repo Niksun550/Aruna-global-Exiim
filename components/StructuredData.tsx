@@ -9,8 +9,8 @@ const StructuredData = () => {
     "alternateName": "Aruna Art Gallery",
     "description": "Exporters of unique handmade treasures and artistic excellence since 2009. Discover museum-grade murals, paintings, and handicrafts from Pune to the world.",
     "url": "https://arunaglobalexiim.com",
-    "logo": "https://arunaglobalexiim.com/Logo_Aruna.png",
-    "image": "https://arunaglobalexiim.com/Logo_Aruna.png",
+    "logo": "https://arunaglobalexiim.com/Aruna.png",
+    "image": "https://arunaglobalexiim.com/Aruna.png",
     "founder": {
       "@type": "Person",
       "name": "Aruna Kangude",

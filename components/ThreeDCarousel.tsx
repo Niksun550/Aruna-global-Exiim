@@ -4,25 +4,48 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import SafeImage from './SafeImage';
+import { products } from '@/lib/products';
 
 const ThreeDCarousel = () => {
   const [rotation, setRotation] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
+  const [mounted, setMounted] = useState(false);
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  const items = [
-    { id: 1, img: '/Image18.png', title: 'Brush Less Art' },
-    { id: 2, img: '/Image4.png', title: 'Handicrafts' },
-    { id: 3, img: '/Image13.png', title: 'Murals' },
-    { id: 4, img: '/Image11.png', title: 'Castings' },
-    { id: 5, img: '/Image12.png', title: 'Designer Diya' },
-    { id: 6, img: '/Image10.png', title: 'Fluid Art' },
-    { id: 7, img: '/Image15.png', title: 'Terracotta' },
-    { id: 8, img: '/Image7.png', title: 'Details' },
-  ];
+  useEffect(() => {
+    const frame = requestAnimationFrame(() => {
+      setMounted(true);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, []);
 
-  const radius = 500; // Increased radius for larger cards
+  // Use only featured products for the carousel to avoid overcrowding
+  const items = products
+    .filter(p => p.featured)
+    .map(p => ({
+      id: p.id,
+      img: p.img,
+      title: p.name
+    }));
+
+  const [radius, setRadius] = useState(800);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setRadius(400);
+      } else if (window.innerWidth < 1024) {
+        setRadius(600);
+      } else {
+        setRadius(800);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const angleStep = 360 / items.length;
 
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -41,12 +64,26 @@ const ThreeDCarousel = () => {
 
   // Auto-rotate
   useEffect(() => {
-    if (isDragging) return;
+    if (!mounted || isDragging) return;
     const interval = setInterval(() => {
       setRotation(prev => prev + 0.1);
     }, 16);
     return () => clearInterval(interval);
-  }, [isDragging]);
+  }, [isDragging, mounted]);
+
+  if (!mounted) {
+    return (
+      <section id="gallery" className="py-32 bg-brand-ink overflow-hidden">
+        <div className="container mx-auto px-8 mb-20 text-center">
+          <span className="micro-label text-brand-gold mb-6 block">Featured Showcase</span>
+          <h2 className="text-6xl font-serif text-white">3D <span className="italic text-brand-gold">Gallery</span></h2>
+        </div>
+        <div className="h-[700px] flex items-center justify-center">
+          <div className="w-32 h-32 border-2 border-brand-gold/20 border-t-brand-gold rounded-full animate-spin" />
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="gallery" className="py-32 bg-brand-ink overflow-hidden perspective-2000">
@@ -72,7 +109,7 @@ const ThreeDCarousel = () => {
             // Calculate dynamic shading based on rotation
             const relativeRotation = (rotation + angle) % 360;
             const normalizedRotation = Math.cos((relativeRotation * Math.PI) / 180);
-            const opacity = (normalizedRotation + 1) / 2; // 0 to 1
+            const opacity = Number(((normalizedRotation + 1) / 2).toFixed(4)); // Round to avoid hydration mismatch
 
             return (
               <div
@@ -88,7 +125,7 @@ const ThreeDCarousel = () => {
                     className="absolute inset-0 z-20 pointer-events-none transition-opacity duration-300"
                     style={{ 
                       backgroundColor: 'black',
-                      opacity: Math.max(0, 0.6 - opacity * 0.6) 
+                      opacity: Number(Math.max(0, 0.6 - opacity * 0.6).toFixed(4)) 
                     }}
                   />
 
@@ -116,7 +153,7 @@ const ThreeDCarousel = () => {
                 {/* Reflection / Shadow on "floor" */}
                 <div 
                   className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-4/5 h-4 bg-black/40 blur-xl rounded-full -z-10"
-                  style={{ opacity: opacity * 0.5 }}
+                  style={{ opacity: Number((opacity * 0.5).toFixed(4)) }}
                 />
               </div>
             );

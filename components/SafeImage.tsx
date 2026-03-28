@@ -32,7 +32,7 @@ const SafeImage = ({
   return (
     <div className={`relative overflow-hidden ${fill ? 'w-full h-full' : ''} ${className}`}>
       <Image
-        src={error ? fallback : src}
+        src={src}
         alt={alt}
         fill={fill}
         sizes={sizes}
@@ -41,10 +41,18 @@ const SafeImage = ({
           objectFit === "cover" ? "object-cover" : "object-contain"
         } ${imageClassName}`}
         onLoad={() => setLoaded(true)}
-        onError={() => setError(true)}
+        onError={(e) => {
+          console.error(`Failed to load image: ${src}`, e);
+          setError(true);
+        }}
       />
       {!loaded && !priority && (
         <div className="absolute inset-0 bg-brand-ink/5 animate-pulse" />
+      )}
+      {error && (
+        <div className="absolute inset-0 flex items-center justify-center bg-brand-ink/5 text-[10px] text-brand-ink/40 p-2 text-center">
+          Image not found: {src}
+        </div>
       )}
     </div>
   );

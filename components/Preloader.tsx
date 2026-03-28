@@ -64,7 +64,7 @@ const Preloader = () => {
               className="relative w-48 h-24 mb-8"
             >
               <SafeImage 
-                src="/Logo_Aruna.png" 
+                src="/Aruna.png" 
                 alt="Aruna Global Exiim" 
                 fill 
                 priority

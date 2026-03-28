@@ -32,7 +32,7 @@ const Navbar = () => {
         <a href="#home" className="flex items-center group" aria-label="Aruna Global Exiim Home">
           <div className="relative w-32 h-12 group-hover:scale-105 transition-transform">
             <SafeImage 
-              src="/Logo_Aruna.png" 
+              src="/Aruna.png" 
               alt="Aruna Global Exiim Logo" 
               fill 
               sizes="128px"

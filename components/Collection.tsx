@@ -11,7 +11,11 @@ const Collection = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const categories = ['All', 'Brush Less PAINTINGS', 'HANDICRAFTS', 'MURALS', 'CASTINGS', 'Designer Diya'];
 
-  const filtered = activeCategory === 'All' ? products : products.filter(p => p.category === activeCategory);
+  const filtered = products.filter(p => {
+    const matchesCategory = activeCategory === 'All' || p.category === activeCategory;
+    const isNotFeatured = !p.featured;
+    return matchesCategory && isNotFeatured;
+  });
 
   return (
     <section id="collection" className="section-padding bg-brand-cream relative overflow-hidden">
@@ -38,7 +42,6 @@ const Collection = () => {
               <button 
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                aria-label={`Filter by ${cat}`}
                 className={`text-[10px] uppercase tracking-[0.2em] font-bold px-6 py-3 rounded-full transition-all ${activeCategory === cat ? 'bg-brand-ink text-white' : 'bg-white text-brand-ink/40 hover:text-brand-ink'}`}
               >
                 {cat}
@@ -83,7 +86,6 @@ const Collection = () => {
                     <Link 
                       href={`/collection/${product.id}`}
                       className="absolute inset-0"
-                      aria-label={`View details of ${product.name}`}
                     />
                   </div>
                 </div>
@@ -92,11 +94,7 @@ const Collection = () => {
                     <p className="micro-label !text-brand-ink/40">{product.category}</p>
                     <h3 className="text-2xl font-serif text-brand-ink">{product.name || 'Masterpiece'}</h3>
                   </div>
-                  <Link 
-                    href={`/collection/${product.id}`} 
-                    className="w-10 h-10 rounded-full border border-brand-ink/10 flex items-center justify-center text-brand-ink/20 group-hover:text-brand-gold group-hover:border-brand-gold transition-colors"
-                    aria-label={`View details of ${product.name}`}
-                  >
+                  <Link href={`/collection/${product.id}`} className="w-10 h-10 rounded-full border border-brand-ink/10 flex items-center justify-center text-brand-ink/20 group-hover:text-brand-gold group-hover:border-brand-gold transition-colors">
                     <ArrowUpRight size={16} />
                   </Link>
                 </div>

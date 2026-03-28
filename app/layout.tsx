@@ -29,9 +29,9 @@ export const metadata: Metadata = {
     telephone: false,
   },
   icons: {
-    icon: '/Logo_Aruna.png',
-    shortcut: '/Logo_Aruna.png',
-    apple: '/Logo_Aruna.png',
+    icon: '/Aruna.png',
+    shortcut: '/Aruna.png',
+    apple: '/Aruna.png',
   },
   alternates: {
     canonical: 'https://arunaglobalexiim.com',
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     description: 'Exporters of unique handmade treasures and artistic excellence since 2009. Discover museum-grade murals, paintings, and handicrafts from Pune to the world.',
     images: [
       {
-        url: '/Logo_Aruna.png',
+        url: '/Aruna.png',
         width: 1200,
         height: 630,
         alt: 'Aruna Global Exiim Art Collection',
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Aruna Global Exiim | Premium Handcrafted Art & Global Exports',
     description: 'Exporters of unique handmade treasures and artistic excellence since 2009. Discover museum-grade murals, paintings, and handicrafts from Pune to the world.',
-    images: ['/Logo_Aruna.png'],
+    images: ['/Aruna.png'],
   },
   robots: {
     index: true,
