@@ -3,7 +3,7 @@
 import { Product } from '@/lib/products';
 import { ArrowLeft, MessageCircle, Sparkles, ShieldCheck, Globe } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
+import SafeImage from './SafeImage';
 import { motion } from 'motion/react';
 
 export default function ProductClient({ product }: { product: Product }) {
@@ -32,14 +32,15 @@ export default function ProductClient({ product }: { product: Product }) {
               transition={{ duration: 0.8 }}
               className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-brand-paper/20 border border-brand-ink/5 shadow-2xl"
             >
-              <Image 
+              <SafeImage 
                 src={product.img} 
                 alt={product.name} 
                 fill
-                className="w-full h-full object-contain p-12"
-                referrerPolicy="no-referrer"
+                priority
+                objectFit="contain"
+                className="p-12"
               />
-              <div className="absolute top-8 left-8 bg-white/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 shadow-lg">
+              <div className="absolute top-8 left-8 bg-white/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 shadow-lg z-20">
                 <span className="text-[9px] uppercase tracking-widest font-bold text-brand-ink">{product.category}</span>
               </div>
             </motion.div>

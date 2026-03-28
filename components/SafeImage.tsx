@@ -27,32 +27,27 @@ const SafeImage = ({
   const [error, setError] = useState(false);
   const [loaded, setLoaded] = useState(false);
   
+  const isLocal = src.startsWith('/') && !src.startsWith('//');
   const fallback = `https://picsum.photos/seed/${encodeURIComponent(alt)}/1200/1600`;
 
   return (
     <div className={`relative overflow-hidden ${fill ? 'w-full h-full' : ''} ${className}`}>
       <Image
-        src={src}
+        src={error ? fallback : src}
         alt={alt}
         fill={fill}
         sizes={sizes}
         priority={priority}
-        className={`transition-opacity duration-500 ${
+        unoptimized={isLocal}
+        className={`transition-all duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)] ${
           objectFit === "cover" ? "object-cover" : "object-contain"
-        } ${imageClassName}`}
+        } ${loaded || priority ? "opacity-100 blur-0" : "opacity-0 blur-2xl"} ${imageClassName}`}
         onLoad={() => setLoaded(true)}
-        onError={(e) => {
-          console.error(`Failed to load image: ${src}`, e);
-          setError(true);
-        }}
+        onError={() => setError(true)}
+        referrerPolicy="no-referrer"
       />
-      {!loaded && !priority && (
+      {!loaded && (
         <div className="absolute inset-0 bg-brand-ink/5 animate-pulse" />
-      )}
-      {error && (
-        <div className="absolute inset-0 flex items-center justify-center bg-brand-ink/5 text-[10px] text-brand-ink/40 p-2 text-center">
-          Image not found: {src}
-        </div>
       )}
     </div>
   );

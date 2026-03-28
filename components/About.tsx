@@ -79,6 +79,7 @@ const About = () => {
                   alt="Aruna - Art Instructor" 
                   fill 
                   className="object-cover"
+                  priority
                 />
               </motion.div>
               

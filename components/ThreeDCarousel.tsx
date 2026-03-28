@@ -139,6 +139,7 @@ const ThreeDCarousel = () => {
                     className="p-6 z-10"
                     imageClassName="group-hover:scale-110 transition-transform duration-1000"
                     objectFit="contain"
+                    priority={i === 0}
                   />
 
                   {/* Ambient Light Rim */}
